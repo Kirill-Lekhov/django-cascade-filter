@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+
+cd ./frontend
+pnpm build
+cp ./dist/cascade-filter.css ../backend/cascade_filter/static/cascade_filter/
+cp ./dist/cascade-filter.umd.js ../backend/cascade_filter/static/cascade_filter/
+
+cd ../backend
+uv build
