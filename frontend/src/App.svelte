@@ -20,6 +20,8 @@
 
 {#if widgetData.filterEditorVersion > VERSION}
 	<ErrorIndicator error="Version of filter is greater than editor version" />
+{:else if tableMeta.fields.length === 0}
+	<ErrorIndicator error="There are no fields in the table meta" />
 {:else}
 	<FilterEditor tableMeta={tableMeta} />
 	<FilterCreateDialog tableMeta={tableMeta} />

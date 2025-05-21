@@ -1,6 +1,7 @@
 from cascade_filter.meta import Table
 
 from typing import Type, Final
+from json import loads
 
 from django.forms.widgets import Widget
 
@@ -29,6 +30,9 @@ class CascadeFilterWidget(Widget):
 		}
 
 	def format_value(self, value):
+		if isinstance(value, str) and value.startswith("\""):
+			return str(loads(value))		# allows to use with django-annoying JSON field
+
 		return value
 
 	def extract_table_meta(self) -> Type[Table]:
