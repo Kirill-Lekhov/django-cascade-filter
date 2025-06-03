@@ -14,7 +14,7 @@ class Missing:
 
 
 def nullable(method: Method):
-	@wraps
+	@wraps(method)
 	def inner(checker: SingleChecker, obj: object) -> bool:
 		attr_value = getattr(obj, checker.cascade_filter.table_field, Missing)
 
