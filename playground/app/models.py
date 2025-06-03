@@ -20,3 +20,4 @@ class Book(models.Model):
 	pages_count = models.PositiveBigIntegerField()
 	genre = models.CharField(max_length=50, choices=BookGenre.choices)
 	author = models.ForeignKey(Author, on_delete=models.PROTECT)
+	note = models.TextField(blank=True, null=True)

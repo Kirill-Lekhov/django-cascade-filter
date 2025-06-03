@@ -1,11 +1,13 @@
 from cascade_filter.clause import Clause
 from cascade_filter.filter import TextFilter
 from cascade_filter.compliance_checker.single import SingleChecker
+from cascade_filter.compliance_checker.decorator import nullable
 
 from typing import cast
 
 
 class TextChecker(SingleChecker[TextFilter]):
+	@nullable
 	def is_fit(self, obj: object) -> bool:
 		attr_value = getattr(obj, self.cascade_filter.table_field, None)
 

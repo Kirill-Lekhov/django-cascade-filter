@@ -8,6 +8,7 @@
 	import { filter as filterStorage } from "@/storage"
 	import clauseLabelMap from "@/clause/clauseLabelMap"
 	import type TableMeta from "@/meta/TableMeta"
+	import { CLAUSES_NULLABLE } from "@/clause/const"
 
 
 	function handleEnabledChange(event: Event): void {
@@ -57,7 +58,7 @@
 		<input type="checkbox" on:change={handleEnabledChange} checked={filter.enabled}>
 		<div>{tableMeta.getField(filter.tableField).label}</div>
 		<div>{clauseLabelMap.get(filter.clause) ?? filter.clause}</div>
-		<div>{filter.value.label}</div>
+		<div>{CLAUSES_NULLABLE.includes(filter.clause) ? "" : filter.value.label}</div>
 	</div>
 
 	<button class="btn-delete" type="button" on:click={onDelete}>&nbsp;×&nbsp;</button>

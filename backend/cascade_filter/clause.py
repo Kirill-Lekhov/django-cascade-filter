@@ -18,7 +18,8 @@ class Clause(ExtendedEnum):
 	ENDS_WITH = "ends with"
 	AND = "and"
 	OR = "or"
-
+	IS_NULL = "is null"
+	IS_NOT_NULL = "is not null"
 
 
 CLAUSES_STRICT_COMPARISON: Final[FrozenSet[Clause]] = frozenset((Clause.EQUAL, Clause.NOT_EQUAL))
@@ -28,3 +29,4 @@ CLAUSES_NON_STRICT_COMPARISON: Final[FrozenSet[Clause]] = frozenset((
 CLAUSES_CONTAINING: Final[FrozenSet[Clause]] = frozenset((Clause.CONTAINS, Clause.NOT_CONTAINS))
 CLAUSES_ACCORDANCE: Final[FrozenSet[Clause]] = frozenset((Clause.IS, Clause.IS_NOT))
 CLAUSES_BOUNDARY: Final[FrozenSet[Clause]] = frozenset((Clause.STARTS_WITH, Clause.ENDS_WITH))
+CLAUSES_NULLABLE: Final[FrozenSet[Clause]] = frozenset((Clause.IS_NULL, Clause.IS_NOT_NULL))

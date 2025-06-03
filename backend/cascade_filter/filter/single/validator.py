@@ -18,7 +18,7 @@ class SingleFilterValidator(BaseFilterValidator):
 		filter_subtype = value.get("subtype")
 
 		if not FieldType.has_value(filter_subtype):
-			raise ValidationError("The \"clause\" field must contain a valid FieldType")
+			raise ValidationError("The \"subtype\" field must contain a valid FieldType")
 
 		filter_table_field = value.get("tableField")
 

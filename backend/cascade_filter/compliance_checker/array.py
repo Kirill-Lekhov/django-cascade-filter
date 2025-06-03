@@ -1,9 +1,11 @@
 from cascade_filter.clause import Clause
 from cascade_filter.filter import ArrayFilter
 from cascade_filter.compliance_checker.single import SingleChecker
+from cascade_filter.compliance_checker.decorator import nullable
 
 
 class ArrayChecker(SingleChecker[ArrayFilter]):
+	@nullable
 	def is_fit(self, obj: object) -> bool:
 		attr_value = getattr(obj, self.cascade_filter.table_field, None)
 

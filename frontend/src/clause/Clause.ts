@@ -13,6 +13,8 @@ enum Clause {
 	"ENDS_WITH" = "ends with",
 	"AND" = "and",
 	"OR" = "or",
+	"IS_NULL" = "is null",
+	"IS_NOT_NULL" = "is not null",
 }
 
 export default Clause

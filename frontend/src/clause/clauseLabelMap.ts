@@ -16,6 +16,8 @@ const clauseLabelMap: Map<Clause, string> = new Map([
 	[Clause.ENDS_WITH, "Заканчивается на"],
 	[Clause.AND, "И"],
 	[Clause.OR, "ИЛИ"],
+	[Clause.IS_NULL, "Является NULL"],
+	[Clause.IS_NOT_NULL, "Не является NULL"],
 ])
 
 export default clauseLabelMap

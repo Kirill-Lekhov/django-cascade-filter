@@ -7,6 +7,7 @@ from cascade_filter.django.filter.array_filter_mixin import ArrayFilterMixin
 from cascade_filter.filter import (
 	SingleFilter, DateFilter, ChoiceFilter, TextFilter, NumericFilter, BooleanFilter, ArrayFilter,
 )
+from cascade_filter.clause import Clause
 
 from django.db.models.query import Q
 
@@ -17,6 +18,11 @@ class SingleFilterMixin(
 	def make_single_filter(self, single_filter: SingleFilter) -> Q:
 		if not single_filter.enabled:
 			return Q()
+
+		if single_filter.clause is Clause.IS_NULL:
+			return Q(**{f"{single_filter.table_field}__isnull": True})
+		elif single_filter.clause is Clause.IS_NOT_NULL:
+			return Q(**{f"{single_filter.table_field}__isnull": False})
 
 		if isinstance(single_filter, DateFilter):
 			return self.make_date_filter(single_filter)

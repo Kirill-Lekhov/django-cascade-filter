@@ -8,3 +8,4 @@ export const CLAUSES_NON_STRICT_COMPARISON = [
 export const CLAUSES_CONTAINING = [Clause.CONTAINS, Clause.NOT_CONTAINS]
 export const CLAUSES_ACCORDANCE = [Clause.IS, Clause.IS_NOT]
 export const CLAUSES_BOUNDARY = [Clause.STARTS_WITH, Clause.ENDS_WITH]
+export const CLAUSES_NULLABLE = [Clause.IS_NULL, Clause.IS_NOT_NULL]

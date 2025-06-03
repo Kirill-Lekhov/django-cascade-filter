@@ -1,4 +1,4 @@
-from cascade_filter.clause import Clause, CLAUSES_STRICT_COMPARISON, CLAUSES_NON_STRICT_COMPARISON
+from cascade_filter.clause import Clause, CLAUSES_STRICT_COMPARISON, CLAUSES_NON_STRICT_COMPARISON, CLAUSES_NULLABLE
 from cascade_filter.exception import ValidationError
 from cascade_filter.filter.single.validator import SingleFilterValidator, CleanedData as _CleanedData
 from cascade_filter.filter.value.validator import CleanedData as _FilterValueCleanedData
@@ -16,7 +16,7 @@ class CleanedData(_CleanedData):
 
 class NumericFilterValidator(SingleFilterValidator):
 	AVAILABLE_CLAUSES: Final[FrozenSet[Clause]] = frozenset((
-		*CLAUSES_STRICT_COMPARISON, *CLAUSES_NON_STRICT_COMPARISON,
+		*CLAUSES_STRICT_COMPARISON, *CLAUSES_NON_STRICT_COMPARISON, *CLAUSES_NULLABLE,
 	))
 
 	def validate(self, value: dict) -> CleanedData:

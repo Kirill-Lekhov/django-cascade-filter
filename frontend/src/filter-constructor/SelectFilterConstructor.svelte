@@ -14,6 +14,7 @@
 	import SingleFilter from "@/filter/SingleFilter"
 	import type TableFieldMeta from "@/meta/TableFieldMeta"
 	import { group } from "@/filter/toolkit"
+	import { CLAUSES_NULLABLE } from "@/clause/const"
 
 
 	function handleChange(event: Event): void {
@@ -38,17 +39,21 @@
 				enabled,
 				clause,
 				tableFieldMeta.name,
-				multiple ? group(...value) : value,
+				multiple ? group(...(value as IChoice[])) : (value as IChoice),
 				tableFieldMeta.type,
 			))
 		}
 	}
 
 
+	let _clauses: Clause[] = [...clauses, ...(tableFieldMeta.nullable ? CLAUSES_NULLABLE : [])]
 	let selectElement: HTMLSelectElement
 	let enabled = false
-	let clause: Clause = clauses[0]
-	let value: any = multiple ? [choices[0]] : choices[0]
+	let clause: Clause = _clauses[0]
+	let value: IChoice | IChoice[] = multiple ? [choices[0]] : choices[0]
+	let isDisabled: boolean
+
+	$: isDisabled = CLAUSES_NULLABLE.includes(clause)
 </script>
 
 <style>
@@ -57,11 +62,18 @@
 	}
 </style>
 
-<FilterConstructor bind:enabled={enabled} bind:clause={clause} clauses={clauses} />
+<FilterConstructor bind:enabled={enabled} bind:clause={clause} clauses={_clauses} />
 
 <FormRow>
 	<label>
-		<select bind:this={selectElement} multiple={multiple} required on:change={handleChange}>
+		<select
+			bind:this={selectElement}
+			multiple={multiple}
+			required
+			on:change={handleChange}
+			disabled={isDisabled}
+			title={isDisabled ? "Значение будет проигнорировано" : ""}
+		>
 			{#each choices as choice, index (choice.value)}
 				<option value={index}>{choice.label}</option>
 			{/each}

@@ -5,7 +5,7 @@
 
 
 	import Clause from "@/clause/Clause"
-	import { CLAUSES_STRICT_COMPARISON, CLAUSES_CONTAINING, CLAUSES_BOUNDARY } from "@/clause/const"
+	import { CLAUSES_STRICT_COMPARISON, CLAUSES_CONTAINING, CLAUSES_BOUNDARY, CLAUSES_NULLABLE } from "@/clause/const"
 	import FilterConstructor from "@/filter-constructor/FilterConstructor.svelte"
 	import type IChoice from "@/choice/IChoice"
 	import FormRow from "@/django-admin/FormRow.svelte"
@@ -26,10 +26,18 @@
 	}
 
 
-	const CLAUSES: Clause[] = [...CLAUSES_STRICT_COMPARISON, ...CLAUSES_CONTAINING, ...CLAUSES_BOUNDARY]
+	const CLAUSES: Clause[] = [
+		...CLAUSES_STRICT_COMPARISON,
+		...CLAUSES_CONTAINING,
+		...CLAUSES_BOUNDARY,
+		...(tableFieldMeta.nullable ? CLAUSES_NULLABLE : []),
+	]
 	let enabled = false
 	let clause: Clause = CLAUSES[0]
 	let value = ""
+	let isDisabled: boolean
+
+	$: isDisabled = CLAUSES_NULLABLE.includes(clause)
 </script>
 
 <style>
@@ -42,7 +50,12 @@
 
 <FormRow>
 	<label>
-		<input type="text" bind:value={value} />
+		<input
+			type="text"
+			bind:value={value}
+			disabled={isDisabled}
+			title={isDisabled ? "Значение будет проигнорировано" : ""}
+		/>
 		Значение
 	</label>
 </FormRow>

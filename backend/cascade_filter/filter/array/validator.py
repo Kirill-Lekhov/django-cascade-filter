@@ -1,4 +1,4 @@
-from cascade_filter.clause import Clause, CLAUSES_CONTAINING
+from cascade_filter.clause import Clause, CLAUSES_CONTAINING, CLAUSES_NULLABLE
 from cascade_filter.exception import ValidationError
 from cascade_filter.filter.single.validator import SingleFilterValidator, CleanedData as _CleanedData
 from cascade_filter.filter.value.validator import CleanedData as _FilterValueCleanedData
@@ -15,7 +15,7 @@ class CleanedData(_CleanedData):
 
 
 class ArrayFilterValidator(SingleFilterValidator):
-	AVAILABLE_CLAUSES: Final[FrozenSet[Clause]] = frozenset(CLAUSES_CONTAINING)
+	AVAILABLE_CLAUSES: Final[FrozenSet[Clause]] = frozenset((*CLAUSES_CONTAINING, *CLAUSES_NULLABLE))
 
 	def value(self, value: dict) -> CleanedData:
 		base_cleaned_data = super().validate(value)
