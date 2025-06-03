@@ -6,8 +6,10 @@ from cascade_filter.meta.field.choice_field import ChoiceField
 from cascade_filter.meta.field.date_field import DateField
 from cascade_filter.meta.field.numeric_field import NumericField
 from cascade_filter.meta.field.text_field import TextField
+from cascade_filter.meta.field.uuid_field import UUIDField
 
 
 __all__ = [
 	"Field", "FieldType", "ArrayField", "BooleanField", "ChoiceField", "DateField", "NumericField", "TextField",
+	"UUIDField",
 ]

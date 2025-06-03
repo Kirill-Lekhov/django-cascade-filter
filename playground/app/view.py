@@ -54,4 +54,6 @@ class BookListAPIView(View):
 			"pages_count": book.pages_count,
 			"genre": book.genre,
 			"author": book.author.name,
+			"note": book.note,
+			"public_uuid": book.public_uuid,
 		}

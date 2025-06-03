@@ -13,6 +13,7 @@
 	import DateFilterConstructor from "@/filter-constructor/DateFilterConstructor.svelte"
 	import NumericFilterConstructor from "@/filter-constructor/NumericFilterConstructor.svelte"
 	import TextFilterConstructor from "@/filter-constructor/TextFilterConstructor.svelte"
+	import UUIDFilterConstructor from "@/filter-constructor/UUIDFilterConstructor.svelte"
 	import ErrorIndicator from "@/ErrorIndicator.svelte"
 	import type SingleFilter from "@/filter/SingleFilter"
 
@@ -31,6 +32,7 @@
 		[FieldType.DATE, DateFilterConstructor],
 		[FieldType.NUMERIC, NumericFilterConstructor],
 		[FieldType.TEXT, TextFilterConstructor],
+		[FieldType.UUID, UUIDFilterConstructor],
 	])
 	let currentTableFieldMeta: TableFieldMeta = tableMeta.fields[0]
 	let ConstructorComponent: ConstructorComponentType | null = null

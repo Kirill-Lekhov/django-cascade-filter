@@ -1,6 +1,6 @@
 from cascade_filter.filter import (
 	BaseFilter, SingleFilter, MultiFilter, DateFilter, ChoiceFilter, TextFilter, NumericFilter, BooleanFilter,
-	ArrayFilter,
+	ArrayFilter, UUIDFilter,
 )
 from cascade_filter.compliance_checker.base import BaseChecker
 from cascade_filter.compliance_checker.single import SingleChecker
@@ -11,6 +11,7 @@ from cascade_filter.compliance_checker.text import TextChecker
 from cascade_filter.compliance_checker.numeric import NumericChecker
 from cascade_filter.compliance_checker.boolean import BooleanChecker
 from cascade_filter.compliance_checker.array import ArrayChecker
+from cascade_filter.compliance_checker.uuid import UUIDChecker
 
 
 class ComplianceChecker:
@@ -47,6 +48,8 @@ class ComplianceChecker:
 			return BooleanChecker(cascade_filter)
 		elif isinstance(cascade_filter, ArrayFilter):
 			return ArrayChecker(cascade_filter)
+		elif isinstance(cascade_filter, UUIDFilter):
+			return UUIDChecker(cascade_filter)
 
 		raise NotImplementedError(f"Unknown filter type: {type(cascade_filter)}")
 

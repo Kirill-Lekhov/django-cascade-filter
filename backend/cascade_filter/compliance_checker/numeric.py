@@ -6,13 +6,20 @@ from cascade_filter.compliance_checker.decorator import nullable
 from typing import cast
 
 
+class Missing:
+	pass
+
+
 class NumericChecker(SingleChecker[NumericFilter]):
 	@nullable
 	def is_fit(self, obj: object) -> bool:
-		attr_value = getattr(obj, self.cascade_filter.table_field, None)
+		attr_value = getattr(obj, self.cascade_filter.table_field, Missing)
+
+		if attr_value is Missing:
+			return False
 
 		if attr_value is None:
-			return False
+			return self.cascade_filter.clause is Clause.NOT_EQUAL
 
 		attr_value = cast(int, attr_value)
 

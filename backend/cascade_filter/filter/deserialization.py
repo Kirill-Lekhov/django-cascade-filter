@@ -8,6 +8,7 @@ from cascade_filter.filter.text import TextFilterDeserializer
 from cascade_filter.filter.numeric import NumericFilterDeserializer
 from cascade_filter.filter.boolean import BooleanFilterDeserializer
 from cascade_filter.filter.array import ArrayFilterDeserializer
+from cascade_filter.filter.uuid import UUIDFilterDeserializer
 
 
 def deserialize(raw_filter: dict) -> BaseFilter:
@@ -22,6 +23,8 @@ def deserialize(raw_filter: dict) -> BaseFilter:
 			deserializer = ChoiceFilterDeserializer()
 		elif filter_subtype == FieldType.TEXT.value:
 			deserializer = TextFilterDeserializer()
+		elif filter_subtype == FieldType.UUID.value:
+			deserializer = UUIDFilterDeserializer()
 		elif filter_subtype == FieldType.NUMERIC.value:
 			deserializer = NumericFilterDeserializer()
 		elif filter_subtype == FieldType.BOOLEAN.value:

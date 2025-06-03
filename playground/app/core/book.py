@@ -5,7 +5,7 @@ from typing import List
 
 from cascade_filter.meta import Table
 from cascade_filter.meta.field import (
-	TextField, ArrayField, BooleanField, ChoiceField, DateField, NumericField,
+	TextField, ArrayField, BooleanField, ChoiceField, DateField, NumericField, UUIDField,
 )
 from cascade_filter.meta.choice import Choice
 
@@ -37,3 +37,4 @@ class BookTable(Table):
 	genre = ChoiceField("Жанр", choices=[Choice(i.label, i.value) for i in BookGenre])
 	author_id = ChoiceField("Автор", choices=get_authors)
 	note = TextField("Заметка", nullable=True)
+	public_uuid = UUIDField("Публичный UUID", nullable=True)

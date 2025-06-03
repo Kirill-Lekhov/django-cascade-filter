@@ -4,8 +4,9 @@ from cascade_filter.django.filter.choice_filter_mixin import ChoiceFilterMixin
 from cascade_filter.django.filter.numeric_filter_mixin import NumericFilterMixin
 from cascade_filter.django.filter.boolean_filter_mixin import BooleanFilterMixin
 from cascade_filter.django.filter.array_filter_mixin import ArrayFilterMixin
+from cascade_filter.django.filter.uuid_filter_mixin import UUIDFilterMixin
 from cascade_filter.filter import (
-	SingleFilter, DateFilter, ChoiceFilter, TextFilter, NumericFilter, BooleanFilter, ArrayFilter,
+	SingleFilter, DateFilter, ChoiceFilter, TextFilter, NumericFilter, BooleanFilter, ArrayFilter, UUIDFilter,
 )
 from cascade_filter.clause import Clause
 
@@ -14,6 +15,7 @@ from django.db.models.query import Q
 
 class SingleFilterMixin(
 	TextFilterMixin, DateFilterMixin, ChoiceFilterMixin, NumericFilterMixin, BooleanFilterMixin, ArrayFilterMixin,
+	UUIDFilterMixin,
 ):
 	def make_single_filter(self, single_filter: SingleFilter) -> Q:
 		if not single_filter.enabled:
@@ -36,5 +38,7 @@ class SingleFilterMixin(
 			return self.make_boolean_filter(single_filter)
 		elif isinstance(single_filter, ArrayFilter):
 			return self.make_array_filter(single_filter)
+		elif isinstance(single_filter, UUIDFilter):
+			return self.make_uuid_filter(single_filter)
 
 		raise NotImplementedError(f"Unknown filter subtype: \"{single_filter.subtype}\"")

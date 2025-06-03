@@ -6,13 +6,20 @@ from cascade_filter.compliance_checker.decorator import nullable
 from arrow import get as get_arrow
 
 
+class Missing:
+	pass
+
+
 class DateChecker(SingleChecker[DateFilter]):
 	@nullable
 	def is_fit(self, obj: object) -> bool:
-		attr_value = getattr(obj, self.cascade_filter.table_field, None)
+		attr_value = getattr(obj, self.cascade_filter.table_field, Missing)
+
+		if attr_value is Missing:
+			return False
 
 		if attr_value is None:
-			return False
+			return self.cascade_filter.clause is Clause.NOT_EQUAL
 
 		attr_value = get_arrow(attr_value)
 		filter_value = get_arrow(self.cascade_filter.value.value)
