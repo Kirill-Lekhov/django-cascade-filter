@@ -43,14 +43,14 @@ wheels = [
 
 [[package]]
 name = "django-cascade-filter"
-version = "0.1.0rc6"
-source = { path = "../backend/dist/django_cascade_filter-0.1.0rc6-py3-none-any.whl" }
+version = "0.1.0rc7"
+source = { path = "../backend/dist/django_cascade_filter-0.1.0rc7-py3-none-any.whl" }
 dependencies = [
     { name = "arrow" },
     { name = "django" },
 ]
 wheels = [
-    { filename = "django_cascade_filter-0.1.0rc6-py3-none-any.whl", hash = "sha256:5d10846553c1b715a5f8e3a68bc9ea4c55b0d144e4bac31b1a30557ddf471b9f" },
+    { filename = "django_cascade_filter-0.1.0rc7-py3-none-any.whl", hash = "sha256:8abe7204c7bf8ce967275bd01e6babc143275a75882f8d0b17e1a37e47cb9fae" },
 ]
 
 [package.metadata]
@@ -82,7 +82,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=4.2.21" },
-    { name = "django-cascade-filter", path = "../backend/dist/django_cascade_filter-0.1.0rc6-py3-none-any.whl" },
+    { name = "django-cascade-filter", path = "../backend/dist/django_cascade_filter-0.1.0rc7-py3-none-any.whl" },
     { name = "django-environ", specifier = ">=0.12.0" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2.9" },
 ]

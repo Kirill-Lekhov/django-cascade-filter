@@ -9,6 +9,7 @@ from cascade_filter.filter.text import TextFilterDeserializer
 from cascade_filter.filter.numeric import NumericFilterDeserializer
 from cascade_filter.filter.boolean import BooleanFilterDeserializer
 from cascade_filter.filter.array import ArrayFilterDeserializer
+from cascade_filter.filter.uuid import UUIDFilterDeserializer
 
 from typing import TypedDict, List, Union, cast
 
@@ -47,6 +48,8 @@ class MultiFilterDeserializer:
 					deserializer = ChoiceFilterDeserializer()
 				elif subfilter_subtype == FieldType.TEXT.value:
 					deserializer = TextFilterDeserializer()
+				elif subfilter_subtype == FieldType.UUID.value:
+					deserializer = UUIDFilterDeserializer()
 				elif subfilter_subtype == FieldType.NUMERIC.value:
 					deserializer = NumericFilterDeserializer()
 				elif subfilter_subtype == FieldType.BOOLEAN.value:

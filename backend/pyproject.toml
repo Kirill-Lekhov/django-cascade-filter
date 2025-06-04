@@ -1,6 +1,6 @@
 [project]
 name = "django-cascade-filter"
-version = "0.1.0-rc6"
+version = "0.1.0-rc7"
 description = "Cascade filters in the Django Admin Panel"
 readme = "README.md"
 requires-python = ">=3.9"
