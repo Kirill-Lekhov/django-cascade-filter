@@ -50,7 +50,7 @@ dependencies = [
     { name = "django" },
 ]
 wheels = [
-    { filename = "django_cascade_filter-0.1.0rc5-py3-none-any.whl", hash = "sha256:dad713d9eeba1fcde4f4576f44e2d97d4bd06bb2cd040e3ce52a4183881df947" },
+    { filename = "django_cascade_filter-0.1.0rc5-py3-none-any.whl", hash = "sha256:df4deea1706316e6ddc9d7d2b85d29f0f50029f03ad23bc612fa7e02b7cc03b6" },
 ]
 
 [package.metadata]
