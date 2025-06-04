@@ -9,6 +9,7 @@ from cascade_filter.filter.type import FilterType
 from cascade_filter.filter.date import DateFilterValidator
 from cascade_filter.filter.choice import ChoiceFilterValidator
 from cascade_filter.filter.text import TextFilterValidator
+from cascade_filter.filter.uuid import UUIDFilterValidator
 from cascade_filter.filter.numeric import NumericFilterValidator
 from cascade_filter.filter.boolean import BooleanFilterValidator
 from cascade_filter.filter.array import ArrayFilterValidator
@@ -55,6 +56,8 @@ class MultiFilterValidator(BaseFilterValidator):
 					validator = ChoiceFilterValidator()
 				elif single_filter_cleaned_data["subtype"] is FieldType.TEXT:
 					validator = TextFilterValidator()
+				elif single_filter_cleaned_data["subtype"] is FieldType.UUID:
+					validator = UUIDFilterValidator()
 				elif single_filter_cleaned_data["subtype"] is FieldType.NUMERIC:
 					validator = NumericFilterValidator()
 				elif single_filter_cleaned_data["subtype"] is FieldType.BOOLEAN:

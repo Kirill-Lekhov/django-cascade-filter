@@ -12,9 +12,10 @@
 9. In the folder of the new filter add the `__init__.py` file with imports of dataclass, validator and deserializer
 10. Add the new field dataclass into `backend/cascade_filter/filter/__init__.py`
 11. Add the new field deserializer into `backend/cascade_filter/filter/deserialization.py`
-12. Add the new field validator into `backend/cascade_filter/django/validation.py`
-13. Add a query filter mixin into `backend/cascade_filter/django/filter/<field_type>_filter_mixin.py`
-14. Add the new query filter to `backend/cascade_filter/django/filter/single_filter_mixin.py`
-15. Add the new filter to `backend/cascade_filter/compliance_checker/checker.py`
-16. Bump package version in the `backend/pyproject.toml`
-17. Test the new filter in the playground
+12. Add the new field validator into `backend/cascade_filter/filter/multi/validator.py`
+13. Add the new field validator into `backend/cascade_filter/django/validation.py`
+14. Add a query filter mixin into `backend/cascade_filter/django/filter/<field_type>_filter_mixin.py`
+15. Add the new query filter to `backend/cascade_filter/django/filter/single_filter_mixin.py`
+16. Add the new filter to `backend/cascade_filter/compliance_checker/checker.py`
+17. Bump package version in the `backend/pyproject.toml`
+18. Test the new filter in the playground
